@@ -64,14 +64,16 @@ const Home = (props) => {
     mainHeader: {
       fontSize:30,
       color:'#344055',
-      textTransform:'uppercase'
+      textTransform:'uppercase',
+      fontFamily: 'Nunito_600SemiBold'
     },
     paraStyle: {
       textAlign:'left',
       fontSize:18,
       color:'#7d7d7d',
       marginTop:20,
-      lineHeight:28
+      lineHeight:28,
+      fontFamily: 'JosefinSans_400Regular',
     },
     // menu style
     lineStyle:{
