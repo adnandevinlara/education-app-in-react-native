@@ -1,11 +1,14 @@
-import { FlatList, TouchableOpacity } from "react-native";
-import { Image } from "react-native";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet,View, Text, Image, TouchableOpacity} from 'react-native';
 import CoursesApi from "./api/course";
-const Course = ({navigation}) => {
-
-    const courseCard = ({ item }) => {
-        
+const CourseDetails = ({navigation, route}) => {
+    const id = route.params.courseID;
+    console.log(id);
+    const item = CoursesApi.find((element) => {
+        return id === element.id;
+    });
+    // console.log(item)
+    const courseCard = (item) => {
+        // console.log(item)
         return (
             <View style={styles.mainContainer}>
                 <View style={styles.courseContainer}>
@@ -16,11 +19,15 @@ const Course = ({navigation}) => {
                     </View>
                     <Text style={styles.mainHeader}>{item.title}</Text>
                     <Text style={styles.mainDecription}>{item.description}</Text>
+                    <Text style={styles.mainDecription}>Course 1: {item.course1}</Text>
+                    <Text style={styles.mainDecription}>Course 2:{item.course2}</Text>
+                    <Text style={styles.mainDecription}>Course 3:{item.course3}</Text>
                     <View style={styles.buttonContainer}>
+                        <Text style={styles.price}>RS.{item.price}</Text>
                         <TouchableOpacity style={styles.buttonStyle}
-                            onPress={()=>navigation.navigate('CourseDetails',{courseID:item.id})}
+                            onPress={()=>navigation.navigate('Course')}
                         >
-                            <Text style={styles.buttonText}>Course Details</Text>
+                            <Text style={styles.buttonText}>Join Now</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -31,13 +38,7 @@ const Course = ({navigation}) => {
 
     return (
         <View>
-            <FlatList 
-            
-            data={CoursesApi}
-            keyExtractor={(item)=>item.id}
-            renderItem={ (item)=>courseCard(item) }
-            
-            />
+            {courseCard(item)}
         </View>
     );
 }
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent:'center',
+        justifyContent:'space-evenly',
     },
     buttonStyle: {
         backgroundColor: "#809fff",
@@ -93,6 +94,19 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color:'#eee',
         fontFamily:'JosefinSans_500Medium'
-    }
+    },
+    price: {
+        backgroundColor: "#344055",
+        // borderRadius: 5,
+        paddingVertical: 10,
+        paddingHorizontal:20,
+        marginVertical:10,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        fontSize: 20,
+        color:'#eee',
+        fontFamily:'JosefinSans_500Medium'
+      },
 })
-export default Course; 
+export default CourseDetails;

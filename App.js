@@ -7,6 +7,8 @@ import Course from './src/screens/course';
 import Contact from './src/screens/contact';
 import About from './src/screens/about';
 import UserData from './src/screens/userData';
+import CourseDetails from './src/screens/CourseDetails';
+
 // importing fonts
 import {
   useFonts,
@@ -21,6 +23,7 @@ import {
   
 } from '@expo-google-fonts/nunito';
 import AppLoading from 'expo-app-loading';
+
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -92,6 +95,17 @@ export default function App() {
             },
             headerTitleAlign: 'center'
           }}  />
+
+          {/* Course Details */} 
+          <Stack.Screen name='CourseDetails' component={CourseDetails} options={{
+            headerTitle:'CourseDetails',
+            headerTitleStyle:{
+              fontSize: 25,
+              fontFamily: 'Nunito_600SemiBold',
+            },
+            headerTitleAlign: 'center'
+          }}  />
+
 
 
       </Stack.Navigator>
