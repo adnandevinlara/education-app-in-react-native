@@ -19,6 +19,17 @@ const Menu = () => {
                 }} />
             </TouchableOpacity>
 
+            <TouchableOpacity
+                style={styles.buttonStyle}
+                onPress={() => navigation.navigate("Students")}>
+                <Image
+                style={styles.iconStyle}
+                source={{
+                    uri: "https://img.icons8.com/stickers/100/000000/conference.png",
+                }}
+                />
+            </TouchableOpacity>
+
             <TouchableOpacity style={styles.buttonStyle} 
             onPress={() => navigation.navigate('Contact')}>
                 {/* <Text>Students</Text> */}
